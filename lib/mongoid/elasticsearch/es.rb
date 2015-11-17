@@ -21,7 +21,7 @@ module Mongoid
       def index_all(step_size = INDEX_STEP)
         index.reset
         q = klass.asc(:id)
-        steps = (q.count / step_size) + 1
+        steps = ((q.count / step_size) + 1).floor
         last_id = nil
         steps.times do |step|
           if last_id
